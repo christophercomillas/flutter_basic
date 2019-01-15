@@ -8,9 +8,30 @@ void main() {
       //home: Home(),
       home: Scaffold(
         appBar: AppBar(title: Text("Basic List View"),),
-        body: getListView(),
+        body: getListView1(),
       ),
     ));
+}
+
+List<String> getListElements(){
+  var items = List<String>.generate(1000, (counter) => "Item $counter");
+  return items;
+}
+
+Widget getListView1(){
+  var listItems = getListElements();
+  var listView = ListView.builder(
+    itemBuilder: (context, index) {
+      return ListTile(
+        leading: Icon(Icons.arrow_right),
+        title: Text(listItems[index]),
+        onTap: (){
+          debugPrint('${listItems[index]} was tapped.');
+        },
+      );
+    }
+  );
+  return listView;
 }
 
 Widget getListView(){
@@ -47,7 +68,7 @@ Widget getListView(){
 
       ListTile(
         leading: Icon(Icons.landscape),
-        title: Text("Landscape"),        
+        title: Text("Landscape Tow"),        
       ),
 
     ],
